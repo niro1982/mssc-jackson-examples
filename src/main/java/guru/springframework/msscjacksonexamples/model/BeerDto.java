@@ -1,5 +1,6 @@
 package guru.springframework.msscjacksonexamples.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,7 +36,12 @@ public class BeerDto {
     @Positive
     private Long upc;
 
+    //showing the price as string in the json and not as BigDecimal
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
+
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     private OffsetDateTime createdDate;
+
     private OffsetDateTime lastUpdatedDate;
 }
